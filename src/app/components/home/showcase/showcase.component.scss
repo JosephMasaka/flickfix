@@ -1,0 +1,40 @@
+.showcase {
+    text-align: center;
+    background: #121212;
+    color: white;
+    padding: 40px 0;
+  }
+  
+  .carousel {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .movie-card {
+    background: #222;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .movie-card img {
+    width: 100%;
+    border-radius: 10px;
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .movie-info {
+    padding: 10px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  

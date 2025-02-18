@@ -1,0 +1,13 @@
+<div class="showcase">
+    <h2>Recently Released Movies</h2>
+    <ngx-slick-carousel class="carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let movie of movies" class="movie-card">
+        <img [src]="movie.image" [alt]="movie.title" />
+        <div class="movie-info">
+          <h3>{{ movie.title }}</h3>
+          <p>Release Date: {{ movie.releaseDate }}</p>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+</div>
+  
