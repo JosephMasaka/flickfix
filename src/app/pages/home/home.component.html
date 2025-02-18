@@ -1,0 +1,12 @@
+<app-showcase></app-showcase>
+
+<div class="container mx-auto p-5">
+    <h1 class="text-3xl font-bold">Trending Movies</h1>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
+      <div *ngFor="let movie of movieService.movies()" class="movie-card">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="Movie Poster">
+        <h2 class="text-lg">{{ movie.title }}</h2>
+        <button (click)="goToMovie(movie.id)">Details</button>
+      </div>
+    </div>
+</div>
