@@ -16,7 +16,7 @@ export class ShowcaseComponent implements OnInit {
   apiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&language=en-US&page=1`;
 
   slideConfig = {
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -33,11 +33,15 @@ export class ShowcaseComponent implements OnInit {
 
   fetchMovies() {
     this.http.get<any>(this.apiUrl).subscribe(response => {
+      // console.log(response);
       this.movies = response.results.map((movie: any) => ({
         title: movie.title,
-        image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-        releaseDate: movie.release_date
+        image: `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`,  // Using backdrop for a full-width background
+        releaseDate: movie.release_date,
+        rating: movie.vote_average.toFixed(1), // Rounds rating to 1 decimal place
+        popularity: movie.popularity,
+        overview: movie.overview
       }));
     });
-  }
+  }  
 }

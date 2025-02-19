@@ -8,11 +8,7 @@ import { ShowcaseComponent } from '../../components/home/showcase/showcase.compo
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
-  styles: [`
-    .movie-card { 
-      @apply bg-gray-800 p-3 rounded-lg shadow-lg text-white;
-    }
-  `], 
+  styleUrl: './home.component.scss', 
   imports: [CommonModule, HttpClientModule, ShowcaseComponent]
 })
 export class HomeComponent implements OnInit {
