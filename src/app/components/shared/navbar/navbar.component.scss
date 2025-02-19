@@ -1,0 +1,35 @@
+nav{
+    z-index: 999;
+}
+
+.search-custom {
+    // max-width: 500px;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0, .5);
+}
+
+.peer {
+    width: 500px;
+}
+
+.sm-hidden {
+    display: none;
+}
+
+.navbar-burger {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+
+.logo {
+    font-family: 'Oswald', 'serif';
+}
+
+@media (min-width: 768px) {
+    .sm-hidden {
+        display: block;
+    }
+}
