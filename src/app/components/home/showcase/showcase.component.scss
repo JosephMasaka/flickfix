@@ -61,6 +61,24 @@
   justify-content: space-between;
 }
 
+.div-custom {
+  bottom: -25px;
+  left: 15px;
+}
+
+.bg-custom {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+form {
+  color: #fff !important;
+}
+
+form:focus div{
+  background-color: #fff;
+  color: #fff;
+}
+
 ngx-slick-carousel .slick-arrow {
   position: absolute !important;
   top: 50% !important;
@@ -108,10 +126,15 @@ ngx-slick-carousel .slick-dots {
     padding: 10%;
     font-size: 14px;
     z-index: 3 !important;
+    bottom: 10%;
   }
 
   .movie-title {
     font-size: 18px;
+  }
+
+  .div-custom {
+    left: 35%;
   }
 
   ngx-slick-carousel .slick-prev {
