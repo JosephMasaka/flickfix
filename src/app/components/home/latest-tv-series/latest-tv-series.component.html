@@ -1,0 +1,44 @@
+<!-- <div class="container">
+    <h2>Latest TV Series</h2>
+  
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="error">{{ error }}</div>
+  
+    <div class="tv-series-grid" *ngIf="latestSeries.length > 0">
+      <div *ngFor="let show of latestSeries" class="tv-show-card">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + show.poster_path" [alt]="show.name">
+        <h3>{{ show.name }}</h3>
+        <p>{{ show.overview | slice: 0:100 }}...</p>
+      </div>
+    </div>
+</div> -->
+
+<div class="container mx-auto p-5 movies">
+    <h1 class="text-3xl font-bold text-dark text-left mb-6">Popular TV Series</h1>
+  
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      <a 
+        *ngFor="let show of latestSeries" 
+        class="movie-card block relative rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105"
+        (click)="goToTvSeriesDetails(show.id)"
+      >
+        <!-- Movie Image -->
+        <div class="relative">
+          <img 
+            [src]="'https://image.tmdb.org/t/p/w500' + show.poster_path" 
+            alt="{{ show.name }}" 
+            class="w-full h-64 object-cover"
+          />
+          <div class="absolute inset-0 bg-black opacity-40 hover:opacity-20 transition"></div>
+        </div>
+  
+        <!-- Movie Details -->
+        <div class="p-4 bg-gray-900 text-white">
+          <h2 class="text-lg font-semibold truncate">{{ show.name }}</h2>
+          <p class="text-sm text-gray-300">⭐ {{ show.vote_average }} / 10</p>
+          <!-- <p class="text-xs text-gray-400 mt-1">{{ show.release_date }}</p> -->
+          <p class="text-sm mt-2 line-clamp-2">{{ show.overview }}</p>
+        </div>
+      </a>
+    </div>
+</div>
