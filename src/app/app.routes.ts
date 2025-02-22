@@ -7,7 +7,7 @@ import { TvSeriesComponent } from './pages/tv-series/tv-series.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movie/:id', component: MovieComponent },
-  { path: 'tv-series/:id', component: TvSeriesComponent },
+  { path: 'tv-series/:seriesId', component: TvSeriesComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' } // Redirect unknown paths
 ];

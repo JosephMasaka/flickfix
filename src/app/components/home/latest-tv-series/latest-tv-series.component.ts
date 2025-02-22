@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; // ✅ Import Router
 
@@ -8,7 +9,7 @@ import { Router } from '@angular/router'; // ✅ Import Router
   standalone: true,
   templateUrl: './latest-tv-series.component.html',
   styleUrls: ['./latest-tv-series.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
 })
 export class LatestTvSeriesComponent implements OnInit {
   latestSeries: any[] = [];
@@ -27,7 +28,7 @@ export class LatestTvSeriesComponent implements OnInit {
 
     this.http.get<any>(url).subscribe({
       next: (data) => {
-        console.log(data);
+        // console.log(data);
         this.latestSeries = data.results;
         this.loading = false;
       },
@@ -40,6 +41,11 @@ export class LatestTvSeriesComponent implements OnInit {
 
   // ✅ Function to navigate to TV Series Details Page
   goToTvSeriesDetails(seriesId: number) {
-    this.router.navigate(['tv-series/', seriesId]);
+    this.router.navigate(['/tv-series', seriesId]);
   }
+  
+
+  // goToTvSeriesDetails(seriesId: number) {
+  //   window.location.href = `/tv-series/${seriesId}`;
+  // }
 }
