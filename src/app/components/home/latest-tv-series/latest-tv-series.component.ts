@@ -42,6 +42,9 @@ export class LatestTvSeriesComponent implements OnInit {
   // ✅ Function to navigate to TV Series Details Page
   goToTvSeriesDetails(seriesId: number) {
     this.router.navigate(['/tv-series', seriesId]);
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   
 

@@ -16,16 +16,18 @@ export class TvSeriesComponent {
   seriesId!: number;
   tvSeries: any;
   relatedTvSeries: any;
+  isLoading: boolean = true;
+  isLoadingRelated: boolean = true;
   API_KEY: string = 'eeb61bdc3a426b35a6564e7cfce2e1bd';
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
   router = inject(Router);
 
-  ngOnInit() {
-    this.seriesId = Number(this.route.snapshot.paramMap.get('seriesId')); // ✅ Corrected param name
-    this.fetchTvSeriesDetails();
-    this.fetchRelatedTvSeries();
-  }
+  // ngOnInit() {
+  //   this.seriesId = Number(this.route.snapshot.paramMap.get('seriesId')); // ✅ Corrected param name
+  //   this.fetchTvSeriesDetails();
+  //   this.fetchRelatedTvSeries();
+  // }
 
   fetchTvSeriesDetails() {
     const url = `https://api.themoviedb.org/3/tv/${this.seriesId}?api_key=${this.API_KEY}&language=en-US`;
@@ -33,9 +35,12 @@ export class TvSeriesComponent {
       next: (data) => {
         // console.log(data);
         this.tvSeries = data;
+        this.fetchRelatedTvSeries();
+        this.isLoading = false;
       },
       error: () => {
         console.error('Failed to load series details');
+        this.isLoading = false;
       }
     });
   }
@@ -52,16 +57,31 @@ export class TvSeriesComponent {
       next: (data) => {
         console.log(data);
         this.relatedTvSeries = data.results.filter((series: any) => series.id !== this.seriesId);
+        this.isLoadingRelated = false;
       },
       error: () => {
         console.error('Failed to load related series');
+        this.isLoadingRelated = false;
       }
     });
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.seriesId = Number(params.get('seriesId')); // ✅ Assign the ID first
+      if (this.seriesId) {
+        this.fetchTvSeriesDetails();
+      }
+    });
+  }
+  
+
   // ✅ Function to navigate to TV Series Details Page
   goToTvSeriesDetails(seriesId: number) {
     this.router.navigate(['/tv-series', seriesId]);
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   get formattedGenres(): string {

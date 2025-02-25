@@ -23,5 +23,8 @@ export class HomeComponent implements OnInit {
 
   goToMovie(id: number) {
     this.router.navigate(['/movie', id]); 
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
