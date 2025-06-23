@@ -1,11 +1,11 @@
 import { Component, HostListener } from '@angular/core';
+import { SearchTMDBComponent } from '../search-tmdb/search-tmdb.component';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+    selector: 'app-navbar',
+    imports: [SearchTMDBComponent],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
   isMenuOpen = false;

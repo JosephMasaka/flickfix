@@ -1,0 +1,52 @@
+/* Search Bar */
+.search-custom {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.peer {
+    width: 500px;
+}
+
+/* Scrollable Search Results */
+.search-results {
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+.search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+    .search-results {
+        left: 5%;
+        width: 90%;
+    }
+}
+
+@media (min-width: 768px) {
+    .search-results {
+        // left: 30%;
+    }
+}
+
+/* Hover Effect */
+.result-item:hover {
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+}

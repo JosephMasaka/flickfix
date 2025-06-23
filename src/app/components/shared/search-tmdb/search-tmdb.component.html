@@ -1,0 +1,38 @@
+<!-- Search Bar -->
+<form class="absolute left-1/2 transform -translate-x-1/2 lg:flex lg:items-center lg:w-auto lg:space-x-6 z-10 top-5">
+  <div class="max-w-lg mx-auto">
+    <div class="relative flex items-center h-12 rounded-lg focus-within:shadow-lg bg-custom overflow-hidden search-custom border-r">
+      <div class="grid place-items-center h-full w-16 text-gray-300 bg-custom">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <input 
+        class="peer h-full outline-none text-sm text-gray-300 px-3 bg-custom" 
+        type="text" id="search" 
+        [formControl]="searchControl" 
+        placeholder="Search movie/series.."
+        (focus)="onFocus()" 
+        (blur)="onBlur()"
+      />
+    </div>
+  </div>
+</form>
+
+<!-- Search Results (Visible Only If Input is Not Empty & Active) -->
+<div *ngIf="showResults" 
+     class="absolute top-20 search-results max-h-96 w-[90%] md:w-[60%] lg:w-[40%] bg-gray-900 rounded-lg shadow-xl p-4 overflow-y-auto">
+  <div *ngFor="let item of results" 
+       class="result-item flex items-center bg-gray-800 hover:bg-gray-700 transition-all duration-300 rounded-lg shadow-md p-3 my-1 cursor-pointer"
+       (click)="viewDetails(item)">
+    
+    <!-- Poster Image -->
+    <img *ngIf="item.poster_path" 
+         [src]="'https://image.tmdb.org/t/p/w200' + item.poster_path" 
+         [alt]="item.title || item.name" 
+         class="w-16 h-24 object-cover rounded-md shadow-md">
+    
+    <!-- Title -->
+    <h3 class="text-white text-lg font-medium ml-4">{{ item.title || item.name }}</h3>
+  </div>
+</div>
