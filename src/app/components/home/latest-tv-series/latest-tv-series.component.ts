@@ -5,11 +5,17 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; // ✅ Import Router
 
 @Component({
-  selector: 'app-latest-tv-series',
-  standalone: true,
-  templateUrl: './latest-tv-series.component.html',
-  styleUrls: ['./latest-tv-series.component.scss'],
-  imports: [CommonModule, HttpClientModule],
+    selector: 'app-latest-tv-series',
+    templateUrl: './latest-tv-series.component.html',
+    styleUrls: ['./latest-tv-series.component.scss'],
+    imports: [CommonModule,
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule]
 })
 export class LatestTvSeriesComponent implements OnInit {
   latestSeries: any[] = [];

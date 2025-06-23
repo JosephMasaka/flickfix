@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SearchTMDBComponent } from '../../shared/search-tmdb/search-tmdb.component';
 
 @Component({
-  selector: 'app-showcase',
-  standalone: true,
-  templateUrl: './showcase.component.html',
-  styleUrls: ['./showcase.component.scss'],
-  imports: [CommonModule, SlickCarouselModule],
+    selector: 'app-showcase',
+    templateUrl: './showcase.component.html',
+    styleUrls: ['./showcase.component.scss'],
+    imports: [CommonModule, SlickCarouselModule, SearchTMDBComponent]
 })
 export class ShowcaseComponent implements OnInit {
   movies: any[] = [];
