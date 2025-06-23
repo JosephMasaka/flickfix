@@ -7,11 +7,10 @@ const API_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'eeb61bdc3a426b35a6564e7cfce2e1bd';
 
 @Component({
-  selector: 'app-movie-detail',
-  standalone: true,
-  templateUrl: './movie.component.html',
-  styles: [``],
-  imports: [CommonModule]
+    selector: 'app-movie-detail',
+    templateUrl: './movie.component.html',
+    styles: [``],
+    imports: [CommonModule]
 })
 export class MovieComponent implements OnInit {
   movie: any = null;
@@ -67,4 +66,18 @@ export class MovieComponent implements OnInit {
     // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  watchMovie() {
+    // if (this.isTVShow) {
+    //   this.showEpisodeSelector = true; // Show selector for seasons and episodes
+    // } else {
+      const watchUrl = `https://watchmovies.example.com/movie/${this.movie.id}`;
+      window.open(watchUrl, '_blank'); 
+    // }
+  }
+
+  // watchEpisode() {
+  //   const watchUrl = `https://watchmovies.example.com/tv/${this.movie.id}/season/${this.selectedSeason}/episode/${this.selectedEpisode}`;
+  //   window.open(watchUrl, '_blank'); // Open streaming URL for TV show episodes
+  // }
 }

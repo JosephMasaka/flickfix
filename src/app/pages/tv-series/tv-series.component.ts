@@ -6,11 +6,17 @@ import { HttpClientModule } from '@angular/common/http';  // ✅ Add this
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tv-series',
-  standalone: true,
-  imports: [CommonModule, HttpClientModule], // ✅ Include HttpClientModule here
-  templateUrl: './tv-series.component.html',
-  styleUrl: './tv-series.component.scss'
+    selector: 'app-tv-series',
+    imports: [CommonModule,
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule], // ✅ Include HttpClientModule here
+    templateUrl: './tv-series.component.html',
+    styleUrl: './tv-series.component.scss'
 })
 export class TvSeriesComponent {
   seriesId!: number;
